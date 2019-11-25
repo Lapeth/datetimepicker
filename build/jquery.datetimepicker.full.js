@@ -723,6 +723,17 @@ var datetimepickerFactory = function ($) {
 				dateHelper = dateFormatter;
 			}
 		},
+
+		addLocale: function(locale, months, dayOfWeekShort, dayOfWeek) {
+			if (months.length !== 12) throw new Error("'months' must be an array of length 12");
+			if (dayOfWeekShort.length !== 7) throw new Error("'dayOfWeekShort' must be an array of length 7");
+			if (dayOfWeek.length !== 7) throw new Error("'dayOfWeek' must be an array of length 7");
+			default_options.i18n[locale] = {
+				months: months,
+				dayOfWeekShort: dayOfWeekShort,
+				dayOfWeek: dayOfWeek
+			};
+		}
 	};
 
 	var standardFormats = {

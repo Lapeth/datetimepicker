@@ -76,6 +76,14 @@
 	<input type="text" value="D, l, M, F, Y-m-d H:i:s" id="datetimepicker_format_value"/>
 	<input type="button" value="applay =>" id="datetimepicker_format_change"/>
 	<input type="text" id="datetimepicker_format" class="input input-wide"/>
+	<h3>Custom locale</h3>
+	<p></p>
+	<select id="datetimepicker_choose_custom_locale">
+		<option value="en">English</option>
+		<option value="kl">Kalaallisut</option>
+	</select>
+	<input type="text" id="datetimepicker_custom_locale"/>
+
 </body>
 <script src="./jquery.js"></script>
 <script src="node_modules/php-date-formatter/js/php-date-formatter.min.js"></script>
@@ -219,6 +227,18 @@ $('#datetimepicker12').datetimepicker({
 	}
 });
 $('#datetimepicker_dark').datetimepicker({theme:'dark'})
+
+
+$.datetimepicker.addLocale(
+		'kl',
+		['Januaari','Februaari','Marsi','Apriili','Maaji','Juuni','Juuli','Aggusti','Septembari','Oktobari','Novembari','Decembari'],
+		['Ata', 'Mar', 'Pin', 'Tal', 'Sis', 'Arf', 'Sap'],
+		['Ataasinngorneq', 'Marlunngorneq', 'Pingasunngorneq', 'Tallimanngorneq', 'Sisamanngorneq', 'Arfininngorneq', 'Sapaat'],
+);
+$('#datetimepicker_custom_locale').datetimepicker();
+$("#datetimepicker_choose_custom_locale").on("change", function(e){
+	$.datetimepicker.setLocale($(e.currentTarget).val());
+});
 
 
 </script>
